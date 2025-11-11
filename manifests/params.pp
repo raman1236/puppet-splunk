@@ -365,12 +365,12 @@ class splunk::params (
       $enterprise_package_name = 'splunk'
     }
     /^(W|w)indows (x86|i386)$/: {
-      $package_suffix          = "${version}-${build}-x86-release.msi"
+      $package_suffix          = "${version}-${build}-windows-x86.msi"
       $forwarder_package_name  = 'UniversalForwarder'
       $enterprise_package_name = 'Splunk Enterprise'
     }
     /^(W|w)indows (x64|x86_64)$/: {
-      $package_suffix          = "${version}-${build}-x64-release.msi"
+      $package_suffix          = "${version}-${build}-windows-x64.msi"
       $forwarder_package_name  = 'UniversalForwarder'
       $enterprise_package_name = 'Splunk Enterprise'
     }
