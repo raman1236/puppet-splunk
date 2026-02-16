@@ -161,7 +161,7 @@ start sending Puppet Server logs:
 }
 ```
 
-This virtual resource will get collected by the `::splunk::forwarder` class if
+This virtual resource will get collected by the `splunk::forwarder` class if
 it is tagged with `splunk_forwarder` and will add the appropriate setting to
 the inputs.conf file and refresh the service.
 
@@ -180,7 +180,7 @@ Alternatively the `splunk::enterprise::password::seed` class can be used indepen
 
 ### Upgrade splunk and splunkforwarder packages
 
-This module has the ability to install *and* upgrade the splunk and splunkforwarder packages. All you have to do is declare `package_ensure => 'latest'` when calling the `::splunk` or `::splunk::forwarder` classes.
+This module has the ability to install *and* upgrade the splunk and splunkforwarder packages. All you have to do is declare `package_ensure => 'latest'` when calling the `splunk` or `splunk::forwarder` classes.
 
 #### Upgrade Example
 
