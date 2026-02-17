@@ -60,6 +60,28 @@ describe 'splunk::forwarder' do
           it { is_expected.to compile.and_raise_error(%r{Do not include splunk::forwarder on the same node as splunk::enterprise}) }
         end
 
+        context 'when package_ensure = latest on Windows' do
+          if facts[:os]['family'] == 'windows'
+            context 'without chocolatey provider' do
+              let(:params) { { 'package_ensure' => 'latest' } }
+
+              it { is_expected.to compile.and_raise_error(%r{This module does not currently support continuously upgrading the Splunk Universal Forwarder on Windows}) }
+            end
+
+            context 'with package_provider = chocolatey' do
+              let(:params) { { 'package_ensure' => 'latest', 'package_provider' => 'chocolatey' } }
+
+              it { is_expected.to compile.with_all_deps }
+            end
+
+            context 'with package_ensure = installed' do
+              let(:params) { { 'package_ensure' => 'installed' } }
+
+              it { is_expected.to compile.with_all_deps }
+            end
+          end
+        end
+
         context 'when manage_password = true' do
           if facts[:kernel] == 'Linux' || facts[:kernel] == 'SunOS'
             let(:params) { { 'manage_password' => true } }
