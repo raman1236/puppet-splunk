@@ -68,7 +68,7 @@ describe 'splunk::forwarder' do
               it { is_expected.to compile.and_raise_error(%r{This module does not currently support continuously upgrading the Splunk Universal Forwarder on Windows}) }
             end
 
-            # Note: Testing with chocolatey provider requires the puppetlabs-chocolatey module
+            # NOTE: Testing with chocolatey provider requires the puppetlabs-chocolatey module
             # The validation logic allows chocolatey - integration tests verify this works in practice
           end
         end
